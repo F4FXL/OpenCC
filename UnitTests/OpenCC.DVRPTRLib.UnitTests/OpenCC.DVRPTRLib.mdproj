@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Default</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ItemType>NUnitAssemblyGroupProject</ItemType>
+    <ProductVersion>10.0.0</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{5E89CD66-176E-487E-99F5-75464C260AA2}</ProjectGuid>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Default|AnyCPU' ">
+    <Assemblies>
+      <Assemblies>
+        <Assembly Path="/home/geoffrey/Documents/Dev/OpenCC/trunk/OpenCC.DVRPTRLib/bin/Debug/OpenCC.DVRPTRLib.dll" />
+      </Assemblies>
+    </Assemblies>
+  </PropertyGroup>
+</Project>
