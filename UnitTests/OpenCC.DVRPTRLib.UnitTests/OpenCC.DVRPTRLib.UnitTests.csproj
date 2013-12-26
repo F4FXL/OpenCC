@@ -33,17 +33,19 @@
     <Reference Include="gtk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
       <Package>gtk-sharp-2.0</Package>
     </Reference>
-    <Reference Include="nunit.framework" />
+    <Reference Include="nunit.framework">
+      <Package>mono-nunit</Package>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
-    <Compile Include="TestDVRPTR.cs" />
+    <Compile Include="TestDVRPTRio.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
     <MonoDevelop>
       <Properties>
-        <Deployment.LinuxDeployData generatePcFile="False" />
+        <Deployment.LinuxDeployData generatePcFile="false" />
       </Properties>
     </MonoDevelop>
   </ProjectExtensions>
