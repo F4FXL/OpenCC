@@ -12,27 +12,28 @@ namespace OpenCC.DVRPTRLib.IO.PCP2
     {
         #region Members
         public static readonly PCP2PacketFactory Default;
-        private Dictionary<PacketType, IPCP2PacketDeserializer> _deserializers;
+        private readonly Dictionary<PacketType, IPCP2PacketDeserializer> _deserializers;
         #endregion
 
         #region ctors
         /// <summary>
-        /// Initializes the <see cref="OpenCC.DVRPTRLib.PCP2.PCP2PacketFactory"/> class.
+        /// Initializes the <see cref="OpenCC.DVRPTRLib.IO.PCP2.PCP2PacketFactory"/> class.
         /// </summary>
         static PCP2PacketFactory()
         {
             Default = new PCP2PacketFactory();
 
             //maybe this should be done somewhere else...
-            Default.RegisterDesrializer(new RXPreamblePacketDeserializer());
-            Default.RegisterDesrializer(new StartPacketDeserializer());
-            Default.RegisterDesrializer(new RXLostPacketDeserializer());
-            Default.RegisterDesrializer(new RxSyncPacketDeserializer());
-            Default.RegisterDesrializer(new ConfigurationPacketDeserializer());
+            Default.RegisterDeserializer(new RXPreamblePacketDeserializer());
+            Default.RegisterDeserializer(new StartPacketDeserializer());
+            Default.RegisterDeserializer(new RXLostPacketDeserializer());
+            Default.RegisterDeserializer(new RxSyncPacketDeserializer());
+            Default.RegisterDeserializer(new ConfigurationPacketDeserializer());
+            Default.RegisterDeserializer(new GetVersionAnswerPacketDeserializer());
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="OpenCC.DVRPTRLib.PCP2.PCP2PacketFactory"/> class.
+        /// Initializes a new instance of the <see cref="OpenCC.DVRPTRLib.IO.PCP2.PCP2PacketFactory"/> class.
         /// </summary>
         public PCP2PacketFactory()
         {
@@ -45,7 +46,7 @@ namespace OpenCC.DVRPTRLib.IO.PCP2
         /// Registers the creator.
         /// </summary>
         /// <param name="creator">Creator.</param>
-        public void RegisterDesrializer(IPCP2PacketDeserializer creator)
+        public void RegisterDeserializer(IPCP2PacketDeserializer creator)
         {
             Guard.IsNotNull(creator, "creator");
 

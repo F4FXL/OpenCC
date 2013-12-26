@@ -64,6 +64,12 @@
     <Compile Include="IO\PCP2\Serializers\GetconfigurationPacketSerializer.cs" />
     <Compile Include="IO\State.cs" />
     <Compile Include="IO\TXState.cs" />
+    <Compile Include="DVRPTR.cs" />
+    <Compile Include="IO\PCP2\GetVersionPacket.cs" />
+    <Compile Include="IO\PCP2\GetVersionAnswerPacket.cs" />
+    <Compile Include="IO\PCP2\Deserializers\GetVersionAnswerPacketDeserializer.cs" />
+    <Compile Include="IO\PCP2\Serializers\GetVersionPacketSerializer.cs" />
+    <Compile Include="DVRPTR.SynchronousBroker.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

@@ -2,11 +2,11 @@ using System;
 
 namespace OpenCC.DVRPTRLib.IO.PCP2
 {
-    public class GetVersionPacket
+    /// <summary>
+    /// Get version packet.
+    /// </summary>
+    public class GetVersionPacket : PCP2Packet
     {
-        public GetVersionPacket()
-        {
-        }
     }
 }
 

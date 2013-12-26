@@ -26,6 +26,7 @@ namespace OpenCC.DVRPTRLib.IO.PCP2
 
             Default.RegisterSerializer(new ConfigurationPacketSerializer());
             Default.RegisterSerializer(new GetConfigurationPacketSerializer());
+            Default.RegisterSerializer(new GetVersionPacketSerializer());
         }
 
         /// <summary>
@@ -48,7 +49,7 @@ namespace OpenCC.DVRPTRLib.IO.PCP2
         {
             Guard.IsNotNull(serializer, "serializer");
 
-            _serializers.Add(serializer.PacketType, serializer);
+            _serializers.Add(serializer.DeserializedPacketType, serializer);
         }
 
         /// <summary>

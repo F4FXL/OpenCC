@@ -24,7 +24,7 @@ namespace OpenCC.DVRPTRLib.IO.PCP2.Serializers
         /// <value>
         /// The type of the packet.
         /// </value>
-        Type PacketType  {get;}
+        Type DeserializedPacketType  {get;}
     }
 }
 

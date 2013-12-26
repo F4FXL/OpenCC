@@ -6,6 +6,7 @@ using OpenCC.Common.IO;
 using System.Linq;
 using System.Threading;
 using OpenCC.Common;
+using OpenCC.Common.Diagnostics;
 
 namespace OpenCC.DVRPTRLib
 {
@@ -29,7 +30,7 @@ namespace OpenCC.DVRPTRLib
         private bool _disposed;
         private readonly bool _streamOwner;
         private EventHandler<PacketReceivedEventArgs> _packetReceived;
-        private SynchronizationContext _syncContext;
+        private readonly SynchronizationContext _syncContext;
         #endregion
 
         #region ctors
@@ -165,6 +166,21 @@ namespace OpenCC.DVRPTRLib
             //TODO
         }
 
+        /// <summary>
+        /// Write the specified packet to the DVRPTR
+        /// </summary>
+        /// <param name='packet'>
+        /// Packet.
+        /// </param>
+        public void Write(PCP2Packet packet)
+        {
+            Guard.IsNotNull(packet, "packet");
+
+            byte[] packetBytes = PCP2PacketBytesFactory.Default.SerializePacket(packet);
+
+            _writeModemQueue.Enqueue(packetBytes);
+        }
+
         private void WriteModemThread()
         {
             while (_run)//TODO use better technique than dumb boolean
@@ -173,6 +189,7 @@ namespace OpenCC.DVRPTRLib
                 if(packetBytes != null && packetBytes.Length >= 4)
                 {
                     _modemStreamWriter.Write(packetBytes);
+                    _modemStreamWriter.Flush();
                 }
             }
         }
@@ -285,6 +302,7 @@ namespace OpenCC.DVRPTRLib
         {
             if(disposing)
             {
+                _disposed = true;
                 if(_streamOwner)
                 {
                     _modemStreamReader.Close();

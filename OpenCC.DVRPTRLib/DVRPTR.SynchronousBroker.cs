@@ -12,7 +12,7 @@ namespace OpenCC.DVRPTRLib
             where TAwaitedPacket : PCP2Packet
         {
             #region members
-            private readonly DVRPTRio _dvrptrio;
+            private DVRPTRio _dvrptrio;
             private readonly ManualResetEvent _resetEvent;
             private TAwaitedPacket _packet;
             #endregion
