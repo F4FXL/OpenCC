@@ -2,7 +2,7 @@ using System;
 using System.IO;
 using OpenCC.DVRPTRLib.IO.PCP2;
 using System.Collections.Generic;
-using OpenCC.DVRPTRLib.Extensions;
+using OpenCC.Common.IO;
 using System.Linq;
 using System.Threading;
 using OpenCC.Common;

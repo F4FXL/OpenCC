@@ -33,7 +33,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
-    <Compile Include="Extensions\BinaryReaderExtensions.cs" />
     <Compile Include="Configuration.cs" />
     <Compile Include="IO\DVRPTRio.cs" />
     <Compile Include="IO\PacketReceivedEventArgs.cs" />

@@ -1,7 +1,7 @@
 using System;
 using System.IO;
 
-namespace OpenCC.DVRPTRLib.Extensions
+namespace OpenCC.Common.IO
 {
     /// <summary>
     /// Stream reader extensions.

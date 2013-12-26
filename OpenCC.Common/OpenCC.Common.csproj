@@ -35,9 +35,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SynchronizedQueue.cs" />
     <Compile Include="Diagnostics\Guard.cs" />
+    <Compile Include="IO\BinaryReaderExtensions.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <Folder Include="Diagnostics\" />
+    <Folder Include="IO\" />
   </ItemGroup>
 </Project>
