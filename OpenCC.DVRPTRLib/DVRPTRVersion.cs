@@ -93,47 +93,41 @@ namespace OpenCC.DVRPTRLib
         }
         #endregion
 
-        #region methods
-        private static int Compare(DVRPTRVersion a, DVRPTRVersion b)
-        {
-            return ComparableHelper.Compare(a, b);
-        }
-        #endregion
         
         #region operators
         public static bool operator <(DVRPTRVersion a, DVRPTRVersion b)
         {
-            int result = Compare(a, b);
+            int result = ComparableHelper.Compare(a, b);
             return result < 0;
         }
 
         public static bool operator >(DVRPTRVersion a, DVRPTRVersion b)
         {
-            int result = Compare(a, b);
+            int result = ComparableHelper.Compare(a, b);
             return result > 0;
         }
 
         public static bool operator <=(DVRPTRVersion a, DVRPTRVersion b)
         {
-            int result = Compare(a, b);
+            int result = ComparableHelper.Compare(a, b);
             return result <= 0;
         }
 
         public static bool operator >=(DVRPTRVersion a, DVRPTRVersion b)
         {
-            int result = Compare(a, b);
+            int result = ComparableHelper.Compare(a, b);
             return result >= 0;
         }
 
         public static bool operator ==(DVRPTRVersion a, DVRPTRVersion b)
         {
-            int result = Compare(a, b);
+            int result = ComparableHelper.Compare(a, b);
             return result == 0;
         }
 
         public static bool operator !=(DVRPTRVersion a, DVRPTRVersion b)
         {
-            int result = Compare(a, b);
+            int result = ComparableHelper.Compare(a, b);
             return result != 0;
         }
         #endregion
@@ -221,7 +215,7 @@ namespace OpenCC.DVRPTRLib
                    _subVersion.GetHashCode() ^ 
                    _subSubVersion.GetHashCode() ^
                    _bugFixLevel.GetHashCode() ^
-                   _deviceIdentification.GetHashCode();
+                   _deviceIdentification.GetHashCode();//not sure if should include this in hashcode since it is not used for comparison ...
         }
 
         /// <summary>
