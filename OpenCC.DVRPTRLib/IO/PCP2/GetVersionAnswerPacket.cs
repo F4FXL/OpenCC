@@ -6,47 +6,40 @@ namespace OpenCC.DVRPTRLib.IO.PCP2
     internal class GetVersionAnswerPacket : PCP2Packet
     {
         #region members
-        private readonly Version _version;
-        private readonly string _versionName;
+        private readonly byte _mainVersion;
+        private readonly byte _subVersion;
+        private readonly byte _subSubVersion;
+        private readonly char _bugFixLevel;
+        private readonly string _deviceIdentification;
         #endregion
 
         #region ctor
         /// <summary>
         /// Initializes a new instance of the <see cref="OpenCC.DVRPTRLib.IO.PCP2.GetVersionAnswerPacket"/> class.
         /// </summary>
-        /// <param name="version">Version.</param>
-        /// <param name="versionName">Version name.</param>
-        public GetVersionAnswerPacket(Version version, string versionName)
+        /// <param name="mainVersion">Main version.</param>
+        /// <param name="subVersion">Sub version.</param>
+        /// <param name="subSubVersion">Sub sub version.</param>
+        /// <param name="bugFixLevel">Bug fix level.</param>
+        /// <param name="deviceIdentification">Device identification.</param>
+        public GetVersionAnswerPacket(byte mainVersion, byte subVersion, byte subSubVersion, char bugFixLevel, string deviceIdentification)
         {
-            Guard.IsNotNull(version, "version");
-            _version = version;
-            _versionName = versionName ?? string.Empty;
+            _mainVersion = mainVersion;
+            _subVersion = subVersion;
+            _subSubVersion = subSubVersion;
+            _bugFixLevel = bugFixLevel;
+            _deviceIdentification = deviceIdentification ?? string.Empty;
         }
         #endregion
 
-        #region properties
+        #region Methods
         /// <summary>
-        /// Gets the firmware version.
         /// </summary>
-        /// <value>The firmware version.</value>
-        public Version FirmwareVersion
+        /// <returns>The version.</returns>
+        public DVRPTRVersion ToVersion()
         {
-            get
-            {
-                return _version;
-            }
-        }
-
-        /// <summary>
-        /// Gets the name of the version.
-        /// </summary>
-        /// <value>The name of the version.</value>
-        public string VersionName
-        {
-            get
-            {
-                return _versionName;
-            }
+            DVRPTRVersion version = new DVRPTRVersion(_mainVersion, _subVersion, _subSubVersion, _bugFixLevel, _deviceIdentification);
+            return version;
         }
         #endregion
     }

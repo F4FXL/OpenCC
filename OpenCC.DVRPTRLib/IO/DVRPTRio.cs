@@ -1,12 +1,12 @@
 using System;
 using System.IO;
 using OpenCC.DVRPTRLib.IO.PCP2;
-using System.Collections.Generic;
 using OpenCC.Common.IO;
 using System.Linq;
 using System.Threading;
 using OpenCC.Common;
 using OpenCC.Common.Diagnostics;
+using System.Diagnostics;
 
 namespace OpenCC.DVRPTRLib
 {
@@ -132,7 +132,7 @@ namespace OpenCC.DVRPTRLib
             CheckDisposed();
             _run = true;
 
-            _readModemThread = new Thread(ReadModem);
+            _readModemThread = new Thread(ReadModemThread);
             _readModemThread.Name = "Read Modem";
             _readModemThread.IsBackground = true;
             _readModemThread.Start();
@@ -141,7 +141,6 @@ namespace OpenCC.DVRPTRLib
             _packetDispatchThread.Name = "Packet Dispatch";
             _packetDispatchThread.IsBackground = true;
             _packetDispatchThread.Start();
-
 
             _writeModemThread = new Thread(WriteModemThread);
             _writeModemThread.Name = "Write Modem";
@@ -158,13 +157,6 @@ namespace OpenCC.DVRPTRLib
             this.Dispose();
         }
 
-        /// <summary>
-        /// Sends the values set in <see cref="Configuration"/> to the DVRPTR
-        /// </summary>
-        public void ApplyConfiguration()
-        {
-            //TODO
-        }
 
         /// <summary>
         /// Write the specified packet to the DVRPTR
@@ -215,7 +207,7 @@ namespace OpenCC.DVRPTRLib
         /// <summary>
         /// Reads the modem and fills the RX queue with the read packets
         /// </summary>
-        private void ReadModem()
+        private void ReadModemThread()
         {
             while(_run)//TODO use better technique than dumb boolean
             {
@@ -243,17 +235,21 @@ namespace OpenCC.DVRPTRLib
                 do
                 {
                     readOK = _modemStreamReader.TryRead(buffer, 0, 1);
+#if DEBUG
+                    if(readOK)
+                        Debug.WriteLine("Wait for StarID read : {0}", Convert.ToString(buffer[0], 16));
+#endif
                 } while (buffer [0] != PCP2Packet.START_ID && readOK);
 
                 readBytesWriter.Write(PCP2Packet.START_ID);
 
-                //Ok we got the start ID now get the legth
+                //Ok we got the start ID now get the length
                 //according to doc it should be "PC ready"
                 short packetLength;
-                if (_modemStreamReader.TryReadInt16(out packetLength))
+                if (_modemStreamReader.TryRead(out packetLength))
                 {
                     readBytesWriter.Write(packetLength);//do not forget to write the length to the output !
-
+                    packetLength += 2; //add 2 to read the CRC bytes
                     while (readCount < packetLength && readOK)//loop 'til we have read all the bytes specified in packetLength
                     {                                         //or 'til somthing bad happens
                         int lastReadCount;
@@ -265,8 +261,7 @@ namespace OpenCC.DVRPTRLib
                 }
 
                 readBytesWriter.Flush();
-                byte[] packetBytes = null;
-                packetBytes = readBytes.ToArray();
+                byte[] packetBytes = readOK ? readBytes.ToArray() : null;
                 return packetBytes;
             }
         }

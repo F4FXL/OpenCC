@@ -2,6 +2,8 @@ using System;
 using System.IO;
 using System.Threading;
 using OpenCC.DVRPTRLib.IO.PCP2;
+using System.Diagnostics;
+using OpenCC.Common.Diagnostics;
 
 namespace OpenCC.DVRPTRLib
 {
@@ -13,6 +15,7 @@ namespace OpenCC.DVRPTRLib
         #region members
         private readonly DVRPTRio _dvrptrIO;
         private TimeSpan _dvrptrTimeout;
+        private static readonly DVRPTRVersion _supportedVersion;
         #endregion
 
         #region ctors
@@ -38,30 +41,68 @@ namespace OpenCC.DVRPTRLib
             _dvrptrIO = new DVRPTRio(stream, streamOwner, syncContext);
             _dvrptrTimeout = TimeSpan.FromMilliseconds(500);
         }
-        
+
+        /// <summary>
+        /// Initializes the <see cref="OpenCC.DVRPTRLib.DVRPTR"/> class.
+        /// </summary>
+        static DVRPTR()
+        {
+            _supportedVersion = new DVRPTRVersion(1,6,9,'b', "DV-RPTR R.2012-08-08");//1.69b DV-RPTR R.2012-08-08
+        }
         #endregion
 
 
 
         #region Methods
-
-        public void GetVersion()
+        /// <summary>
+        /// Gets the version.
+        /// </summary>
+        /// <returns>The version.</returns>
+        public DVRPTRVersion GetVersion()
         {
-            using(SynchronousBroker<GetVersionAnswerPacket> sync = new SynchronousBroker<GetVersionAnswerPacket>(this._dvrptrIO))
-            {
-                GetVersionPacket getVerPacket = new GetVersionPacket();
-                _dvrptrIO.Write(getVerPacket);
-                sync.WaitHandle.WaitOne(_dvrptrTimeout);
+            DVRPTRVersion version = null;
 
+            GetVersionAnswerPacket versionAnswerPacket = SendCommandAndWaitForAnswer<GetVersionAnswerPacket>(new GetVersionPacket());
+            if (versionAnswerPacket != null)
+                version = versionAnswerPacket.ToVersion();
+
+            return version;
+        }
+
+        private TAnswerPacket SendCommandAndWaitForAnswer<TAnswerPacket>(PCP2Packet commandPacket)
+            where TAnswerPacket : PCP2Packet
+        {
+            Guard.IsNotNull(commandPacket, "commandPacket");
+
+            using(SynchronousBroker<TAnswerPacket> sync = new SynchronousBroker<TAnswerPacket>(this._dvrptrIO))
+            {
+                _dvrptrIO.Write(commandPacket);
+                bool timedOut = !sync.WaitHandle.WaitOne(_dvrptrTimeout);
+
+                if (timedOut)
+                    throw new DVRPTRTimeoutException();
+
+                return sync.Packet;
             }
         }
 
         /// <summary>
         /// Open this instance.
         /// </summary>
+        /// <exception cref="DVRPTRException">Failed to communicate with board</exception>
+        /// <exception cref="DVRPTRVersionException">Unsuported FW version</exception>
         public void Open()
         {
             _dvrptrIO.Open();
+            if(IsOpen)
+            {
+                DVRPTRVersion boardVersion = this.GetVersion();
+                if (boardVersion == null)
+                    throw new DVRPTRException("Failed to retrieve version");
+
+                if (boardVersion < _supportedVersion)
+                    throw new DVRPTRVersionException(_supportedVersion, boardVersion);
+            }
         }
 
         /// <summary>
@@ -74,6 +115,18 @@ namespace OpenCC.DVRPTRLib
         #endregion
 
         #region properties
+
+        /// <summary>
+        /// Gets a value indicating whether this instance is open.
+        /// </summary>
+        /// <value><c>true</c> if this instance is open; otherwise, <c>false</c>.</value>
+        public bool IsOpen
+        {
+            get
+            {
+                return _dvrptrIO.IsOpen;
+            }
+        }
         /// <summary>
         /// Gets or sets the time out for communicating with the DVRPTR board.
         /// Default is 500ms

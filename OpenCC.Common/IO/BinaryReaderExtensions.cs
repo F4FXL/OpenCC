@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Diagnostics;
 
 namespace OpenCC.Common.IO
 {
@@ -14,7 +15,7 @@ namespace OpenCC.Common.IO
         /// <returns><c>true</c>, if read int16 was tryed, <c>false</c> otherwise.</returns>
         /// <param name="streamReader">Stream reader.</param>
         /// <param name="value">Value.</param>
-        public static bool TryReadInt16(this BinaryReader streamReader, out Int16 value)
+        public static bool TryRead(this BinaryReader streamReader, out Int16 value)
         {
             Int16 localValue = 0;
             Action action = delegate
@@ -74,8 +75,10 @@ namespace OpenCC.Common.IO
                 action();
                 success = true;
             }
-            catch(IOException){}
-            catch(ObjectDisposedException){}
+            catch(Exception ex)
+            {
+                Debug.WriteLine(ex);
+            }
 
             return success;
         }

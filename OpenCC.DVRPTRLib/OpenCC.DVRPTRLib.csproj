@@ -70,6 +70,10 @@
     <Compile Include="IO\PCP2\Deserializers\GetVersionAnswerPacketDeserializer.cs" />
     <Compile Include="IO\PCP2\Serializers\GetVersionPacketSerializer.cs" />
     <Compile Include="DVRPTR.SynchronousBroker.cs" />
+    <Compile Include="DVRPTRVersion.cs" />
+    <Compile Include="DVRPTRException.cs" />
+    <Compile Include="DVRPTRVersionException.cs" />
+    <Compile Include="DVRPTRTimeoutException.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

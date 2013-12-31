@@ -16,12 +16,14 @@ namespace OpenCC.DVRPTRLib.UnitTests
             using (SerialPort serial = new SerialPort("/dev/ttyACM0"))
             {
                 serial.Open();
-                DVRPTRio dvrptr = new DVRPTRio(serial.BaseStream, false);
-                dvrptr.PacketReceived += (sender, e) => Debug.WriteLine(e.Packet);
-                dvrptr.Open();
+                using (DVRPTRio dvrptr = new DVRPTRio(serial.BaseStream, false))
+                {
+                    dvrptr.PacketReceived += (sender, e) => Debug.WriteLine(e.Packet);
+                    dvrptr.Open();
 
-                while (dvrptr.IsOpen)
-                    Thread.Sleep(500);
+                    while (dvrptr.IsOpen)
+                        Thread.Sleep(500);
+                }
             }
         }
     }

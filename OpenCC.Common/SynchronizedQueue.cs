@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Threading;
+using System.Diagnostics;
 
 namespace OpenCC.Common
 {
@@ -9,6 +10,7 @@ namespace OpenCC.Common
     /// A simple queue that can be used to implement Producer Consumer pattern
     /// Calls to <see cref="Dequeue"/> block the calling thread until data is put into the queue
     /// </summary>
+    [DebuggerDisplay("Count = {Count}")]
     public class SynchronizedQueue<TITEM>
     {
         #region Members

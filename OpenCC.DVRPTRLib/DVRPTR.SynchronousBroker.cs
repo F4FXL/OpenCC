@@ -35,7 +35,7 @@ namespace OpenCC.DVRPTRLib
             {
                 if (e.Packet is TAwaitedPacket)//is this what we are waiting for ?
                 {
-                    _dvrptrio.PacketReceived += HandlePacketReceived;//unsubscribe
+                    _dvrptrio.PacketReceived -= HandlePacketReceived;//unsubscribe
                     _packet = (TAwaitedPacket)e.Packet;
                     _resetEvent.Set();
                 }
@@ -44,7 +44,11 @@ namespace OpenCC.DVRPTRLib
 
             #region properties
 
-            private TAwaitedPacket Packet
+            /// <summary>
+            /// Gets the packet.
+            /// </summary>
+            /// <value>The packet.</value>
+            public TAwaitedPacket Packet
             {
                 get
                 {
