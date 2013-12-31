@@ -16,6 +16,7 @@ namespace OpenCC.DVRPTRLib.UnitTests
                 serial.Open();
                 using(DVRPTR dvrptr = new DVRPTR(serial.BaseStream,false))
                 {
+                    dvrptr.TimeOut = TimeSpan.FromMilliseconds(-1);//this will give us infinite timeout so we can debug
                     dvrptr.Open();
                     DVRPTRVersion version = dvrptr.GetVersion();
 

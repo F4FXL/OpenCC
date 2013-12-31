@@ -34,7 +34,7 @@ namespace OpenCC.DVRPTRLib.UnitTests
             Assert.IsTrue(a.Equals(b), "a should equal b");
 
             a = new DVRPTRVersion(1,6,9,'a', "Test");
-            b = new DVRPTRVersion(1,6,8,'z', "Test");
+            b = new DVRPTRVersion(1,6,8,'p', "Test");
             Assert.IsFalse(a.Equals(b), "a should NOT equal b");
 
             a = new DVRPTRVersion(1,6,9,'a', "Test");
@@ -50,7 +50,7 @@ namespace OpenCC.DVRPTRLib.UnitTests
             Assert.AreEqual(a.GetHashCode(), b.GetHashCode(), "a should equal b");
 
             a = new DVRPTRVersion(1,6,9,'a', "Test");
-            b = new DVRPTRVersion(1,6,8,'z', "Test");
+            b = new DVRPTRVersion(1,6,8,'p', "Test");
             Assert.AreNotEqual(a.GetHashCode(), b.GetHashCode(), "a should NOT equal b");
         }
 

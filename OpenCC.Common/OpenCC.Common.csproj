@@ -36,6 +36,7 @@
     <Compile Include="SynchronizedQueue.cs" />
     <Compile Include="Diagnostics\Guard.cs" />
     <Compile Include="IO\BinaryReaderExtensions.cs" />
+    <Compile Include="ComparableHelper.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

@@ -50,9 +50,6 @@
     </MonoDevelop>
   </ProjectExtensions>
   <ItemGroup>
-    <Folder Include="Utilities\" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\..\OpenCC.DVRPTRLib\OpenCC.DVRPTRLib.csproj">
       <Project>{3A9654AC-29E1-4511-90DE-8BCC109AB6D9}</Project>
       <Name>OpenCC.DVRPTRLib</Name>

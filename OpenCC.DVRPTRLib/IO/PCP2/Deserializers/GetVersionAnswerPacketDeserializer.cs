@@ -29,10 +29,12 @@ namespace OpenCC.DVRPTRLib.IO.PCP2.Deserializers
             byte subsubVersion = Convert.ToByte((packetBuffer [4] >> 4) & 0xFF);
 
             char bugFixLevel = '\0';
-            if((packetBuffer [4] & 0x0F) > 0)
+            if((packetBuffer [4] & 0x0F) > 0)//if this is zero we do not have any bugfix level. 1 means A, 2 b and so on ...
                 bugFixLevel = Convert.ToChar((packetBuffer [4] & 0x0F) + 'a' - 1);
 
-            string deviceIdentification = Encoding.ASCII.GetString(packetBuffer,6,packetBuffer.Length - 8);
+            string deviceIdentification = string.Empty;
+            if(packetBuffer.Length - 8 > 6)//make sur we do not overrun
+                deviceIdentification = Encoding.ASCII.GetString(packetBuffer,6,packetBuffer.Length - 8);
 
             GetVersionAnswerPacket packet = new GetVersionAnswerPacket(mainVersion, subVersion, subsubVersion, bugFixLevel, deviceIdentification);
             return packet;
