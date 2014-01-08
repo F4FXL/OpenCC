@@ -1,6 +1,6 @@
 using System;
 using System.Text;
-using System.Linq;
+using OpenCC.DVRPTRLib.Packets;
 
 namespace OpenCC.DVRPTRLib.IO.PCP2.Deserializers
 {

@@ -1,8 +1,8 @@
 using System;
 
-namespace OpenCC.DVRPTRLib.IO.PCP2
+namespace OpenCC.DVRPTRLib.Packets
 {
-    internal class GetConfigurationPacket : PCP2Packet
+    internal class GetConfigurationPacket : Packet
     {
         public GetConfigurationPacket()
         {

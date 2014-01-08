@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using OpenCC.DVRPTRLib.IO.PCP2.Serializers;
 using OpenCC.Common.Diagnostics;
+using OpenCC.DVRPTRLib.Packets;
 
 namespace OpenCC.DVRPTRLib.IO.PCP2
 {
@@ -18,7 +19,7 @@ namespace OpenCC.DVRPTRLib.IO.PCP2
 
         #region ctors
         /// <summary>
-        /// Initializes the <see cref="OpenCC.DVRPTRLib.PCP2.PCP2PacketBytesFactory"/> class.
+        /// Initializes the <see cref="PCP2PacketBytesFactory"/> class.
         /// </summary>
         static PCP2PacketBytesFactory()
         {
@@ -61,7 +62,7 @@ namespace OpenCC.DVRPTRLib.IO.PCP2
         /// <param name='packet'>
         /// Packet.
         /// </param>
-        public byte[] SerializePacket(PCP2Packet packet)
+        public byte[] SerializePacket(Packet packet)
         {
             Guard.IsNotNull(packet, "packet");
             byte[] serializedPacketBytes = null;

@@ -36,37 +36,25 @@
     <Compile Include="Configuration.cs" />
     <Compile Include="IO\DVRPTRio.cs" />
     <Compile Include="IO\PacketReceivedEventArgs.cs" />
-    <Compile Include="IO\PCP2\PCP2Packet.cs" />
     <Compile Include="IO\PCP2\CommandMessageAnswer.cs" />
     <Compile Include="IO\PCP2\PCP2Exception.cs" />
     <Compile Include="IO\PCP2\PCP2PacketFactory.cs" />
-    <Compile Include="IO\PCP2\PacketType.cs" />
-    <Compile Include="IO\PCP2\RXPreamblePacket.cs" />
-    <Compile Include="IO\PCP2\StartPacket.cs" />
-    <Compile Include="IO\PCP2\RxSyncPacket.cs" />
     <Compile Include="IO\PCP2\Deserializers\PCP2PacketDeserializer.cs" />
     <Compile Include="IO\PCP2\Deserializers\RxSyncPacketDeserializer.cs" />
     <Compile Include="IO\PCP2\Deserializers\StartPacketDeserializer.cs" />
     <Compile Include="IO\PCP2\Deserializers\RXPreamblePacketDeserializer.cs" />
     <Compile Include="IO\PCP2\Deserializers\IPCP2PacketDeserializer.cs" />
-    <Compile Include="IO\PCP2\EOTPacket.cs" />
-    <Compile Include="IO\PCP2\RXLostPacket.cs" />
     <Compile Include="IO\PCP2\Deserializers\RXLostPacketDeserializer.cs" />
     <Compile Include="IO\PCP2\Deserializers\EOTPacketDeserializer.cs" />
-    <Compile Include="IO\PCP2\StreamIdPCP2Packet.cs" />
     <Compile Include="IO\PCP2\Serializers\PCP2PacketSerializer.cs" />
     <Compile Include="IO\PCP2\Serializers\IPCP2PacketSerializer.cs" />
     <Compile Include="IO\PCP2\PCP2PacketBytesFactory.cs" />
-    <Compile Include="IO\PCP2\ConfigurationPacket.cs" />
     <Compile Include="IO\PCP2\Serializers\ConfigurationPacketSerializer.cs" />
     <Compile Include="IO\PCP2\Deserializers\ConfigurationPacketDeserializer.cs" />
-    <Compile Include="IO\PCP2\GetConfigurationPacket.cs" />
     <Compile Include="IO\PCP2\Serializers\GetconfigurationPacketSerializer.cs" />
     <Compile Include="IO\State.cs" />
     <Compile Include="IO\TXState.cs" />
     <Compile Include="DVRPTR.cs" />
-    <Compile Include="IO\PCP2\GetVersionPacket.cs" />
-    <Compile Include="IO\PCP2\GetVersionAnswerPacket.cs" />
     <Compile Include="IO\PCP2\Deserializers\GetVersionAnswerPacketDeserializer.cs" />
     <Compile Include="IO\PCP2\Serializers\GetVersionPacketSerializer.cs" />
     <Compile Include="DVRPTR.SynchronousBroker.cs" />
@@ -74,17 +62,33 @@
     <Compile Include="DVRPTRException.cs" />
     <Compile Include="DVRPTRVersionException.cs" />
     <Compile Include="DVRPTRTimeoutException.cs" />
+    <Compile Include="Packets\ConfigurationPacket.cs" />
+    <Compile Include="Packets\EOTPacket.cs" />
+    <Compile Include="Packets\GetConfigurationPacket.cs" />
+    <Compile Include="Packets\GetVersionAnswerPacket.cs" />
+    <Compile Include="Packets\GetVersionPacket.cs" />
+    <Compile Include="Packets\RXLostPacket.cs" />
+    <Compile Include="Packets\RXPreamblePacket.cs" />
+    <Compile Include="Packets\RxSyncPacket.cs" />
+    <Compile Include="Packets\StartPacket.cs" />
+    <Compile Include="Packets\Packet.cs" />
+    <Compile Include="IO\PCP2\PacketType.cs" />
+    <Compile Include="Packets\StreamIdPacket.cs" />
+    <Compile Include="IO\PCP2\Constants.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <Folder Include="Extensions\" />
     <Folder Include="IO\" />
-    <Folder Include="Commands\" />
+    <Folder Include="Packets\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OpenCC.Common\OpenCC.Common.csproj">
       <Project>{D78303D7-9220-4F4C-9E3D-B1F3C87ED8F3}</Project>
       <Name>OpenCC.Common</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="IO\PCP2\PCP2Packet.cs" />
   </ItemGroup>
 </Project>

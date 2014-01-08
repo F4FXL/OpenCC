@@ -1,4 +1,5 @@
 using System;
+using OpenCC.DVRPTRLib.Packets;
 
 namespace OpenCC.DVRPTRLib.IO.PCP2.Serializers
 {
@@ -16,7 +17,7 @@ namespace OpenCC.DVRPTRLib.IO.PCP2.Serializers
         /// <param name='packet'>
         /// Packet.
         /// </param>
-        byte[] SerializePacket(PCP2Packet packet);
+        byte[] SerializePacket(Packet packet);
 
         /// <summary>
         /// Gets the type of the packet.

@@ -2,6 +2,7 @@ using System;
 using System.Threading;
 using OpenCC.Common.Diagnostics;
 using OpenCC.DVRPTRLib.IO.PCP2;
+using OpenCC.DVRPTRLib.Packets;
 
 namespace OpenCC.DVRPTRLib
 {
@@ -9,7 +10,7 @@ namespace OpenCC.DVRPTRLib
     {
         ///<summary>Handles synchronous calls</summary>
         private sealed class SynchronousBroker<TAwaitedPacket> : IDisposable
-            where TAwaitedPacket : PCP2Packet
+            where TAwaitedPacket : Packet
         {
             #region members
             private DVRPTRio _dvrptrio;

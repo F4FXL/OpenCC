@@ -1,5 +1,6 @@
 using System;
 using OpenCC.Common.Diagnostics;
+using OpenCC.DVRPTRLib.Packets;
 
 namespace OpenCC.DVRPTRLib.IO.PCP2.Serializers
 {
@@ -7,7 +8,7 @@ namespace OpenCC.DVRPTRLib.IO.PCP2.Serializers
     /// PC p2 packet serializer.
     /// </summary>
     internal abstract class PCP2PacketSerializer<TPacket> : IPCP2PacketSerializer
-        where TPacket : PCP2Packet
+        where TPacket : Packet
     {
         #region ctors
         /// <summary>
@@ -28,7 +29,7 @@ namespace OpenCC.DVRPTRLib.IO.PCP2.Serializers
         /// <param name='packet'>
         /// Packet.
         /// </param>
-        public byte[] SerializePacket(PCP2Packet packet)
+        public byte[] SerializePacket(Packet packet)
         {
             Guard.IsNotNull(packet, "packet");
 

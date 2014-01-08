@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using OpenCC.Common.Diagnostics;
 using OpenCC.DVRPTRLib.IO.PCP2.Deserializers;
+using OpenCC.DVRPTRLib.Packets;
 
 namespace OpenCC.DVRPTRLib.IO.PCP2
 {
@@ -58,7 +59,7 @@ namespace OpenCC.DVRPTRLib.IO.PCP2
         /// </summary>
         /// <returns>The packet.</returns>
         /// <param name="packetBuffer">Packet buffer.</param>
-        public PCP2Packet CreatePacket(byte[] packetBuffer)
+        public Packet CreatePacket(byte[] packetBuffer)
         {
             Guard.IsNotNull(packetBuffer, "packetBuffer");
 
@@ -68,7 +69,7 @@ namespace OpenCC.DVRPTRLib.IO.PCP2
             PacketType packetType = (PacketType)packetBuffer[3];
 
             IPCP2PacketDeserializer creator;
-            PCP2Packet packet = null;
+            Packet packet = null;
             if(_deserializers.TryGetValue(packetType, out creator))
             {
                 packet = creator.CreatePacket(packetBuffer);

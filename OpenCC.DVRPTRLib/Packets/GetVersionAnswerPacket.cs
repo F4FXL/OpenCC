@@ -1,9 +1,9 @@
 using System;
 using OpenCC.Common.Diagnostics;
 
-namespace OpenCC.DVRPTRLib.IO.PCP2
+namespace OpenCC.DVRPTRLib.Packets
 {
-    internal class GetVersionAnswerPacket : PCP2Packet
+    internal class GetVersionAnswerPacket : Packet
     {
         #region members
         private readonly byte _mainVersion;

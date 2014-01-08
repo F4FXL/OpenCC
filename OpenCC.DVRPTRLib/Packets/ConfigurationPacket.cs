@@ -1,7 +1,7 @@
 
-namespace OpenCC.DVRPTRLib.IO.PCP2
+namespace OpenCC.DVRPTRLib.Packets
 {
-    internal class ConfigurationPacket : PCP2Packet
+    internal class ConfigurationPacket : Packet
     {
         #region ctor
         /// <summary>

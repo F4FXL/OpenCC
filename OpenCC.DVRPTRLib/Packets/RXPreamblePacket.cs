@@ -1,8 +1,8 @@
 using System;
 
-namespace OpenCC.DVRPTRLib.IO.PCP2
+namespace OpenCC.DVRPTRLib.Packets
 {
-    internal class RXPreamblePacket : StreamIdPCP2Packet
+    internal class RXPreamblePacket : StreamIdPacket
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="OpenCC.DVRPTRLib.PCP2.RXPreamblePacket"/> class.

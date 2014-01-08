@@ -7,6 +7,7 @@ using System.Threading;
 using OpenCC.Common;
 using OpenCC.Common.Diagnostics;
 using System.Diagnostics;
+using OpenCC.DVRPTRLib.Packets;
 
 namespace OpenCC.DVRPTRLib
 {
@@ -169,7 +170,7 @@ namespace OpenCC.DVRPTRLib
         /// <param name='packet'>
         /// Packet.
         /// </param>
-        public void Write(PCP2Packet packet)
+        public void Write(Packet packet)
         {
             Guard.IsNotNull(packet, "packet");
 
@@ -202,7 +203,7 @@ namespace OpenCC.DVRPTRLib
                 byte[] packetBytes = _readModemQueue.Dequeue();
                 if (packetBytes != null && packetBytes.Length >= 4)//packets should at least always have a length of 4
                 {                                      //StartID, 2 bytes length, and command byte
-                    PCP2Packet packet = PCP2PacketFactory.Default.CreatePacket(packetBytes);
+                    Packet packet = PCP2PacketFactory.Default.CreatePacket(packetBytes);
                     if(packet != null)
                         RaisePacketReceived(packet);
                 }
@@ -244,9 +245,9 @@ namespace OpenCC.DVRPTRLib
                     if(readOK)
                         Debug.WriteLine("Wait for StarID read : {0}", Convert.ToString(buffer[0], 16));
 #endif
-                } while (buffer [0] != PCP2Packet.START_ID && readOK);
+                } while (buffer [0] != Constants.START_ID && readOK);
 
-                readBytesWriter.Write(PCP2Packet.START_ID);
+                readBytesWriter.Write(Constants.START_ID);
 
                 //Ok we got the start ID now get the length
                 //according to doc it should be "PC ready"
@@ -324,7 +325,7 @@ namespace OpenCC.DVRPTRLib
         /// <param name='packet'>
         /// Packet.
         /// </param>
-        private void RaisePacketReceived(PCP2Packet packet)
+        private void RaisePacketReceived(Packet packet)
         {
             PacketReceivedEventArgs e = new PacketReceivedEventArgs(packet);
             OnPacketReceived(e);

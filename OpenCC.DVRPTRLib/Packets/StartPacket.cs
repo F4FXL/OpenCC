@@ -1,11 +1,11 @@
-using System;
+using OpenCC.DVRPTRLib.Packets;
 
-namespace OpenCC.DVRPTRLib.IO.PCP2.Deserializers
+namespace OpenCC.DVRPTRLib.Packets
 {
     /// <summary>
     /// Start packet.
     /// </summary>
-    internal class StartPacket : StreamIdPCP2Packet
+    internal class StartPacket : StreamIdPacket
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="OpenCC.DVRPTRLib.PCP2.StartPacket"/> class.

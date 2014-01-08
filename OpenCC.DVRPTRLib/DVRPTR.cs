@@ -4,6 +4,7 @@ using System.Threading;
 using OpenCC.DVRPTRLib.IO.PCP2;
 using System.Diagnostics;
 using OpenCC.Common.Diagnostics;
+using OpenCC.DVRPTRLib.Packets;
 
 namespace OpenCC.DVRPTRLib
 {
@@ -68,8 +69,8 @@ namespace OpenCC.DVRPTRLib
             return version;
         }
 
-        private TAnswerPacket SendCommandAndWaitForAnswer<TAnswerPacket>(PCP2Packet commandPacket)
-            where TAnswerPacket : PCP2Packet
+        private TAnswerPacket SendCommandAndWaitForAnswer<TAnswerPacket>(Packet commandPacket)
+            where TAnswerPacket : Packet
         {
             Guard.IsNotNull(commandPacket, "commandPacket");
 

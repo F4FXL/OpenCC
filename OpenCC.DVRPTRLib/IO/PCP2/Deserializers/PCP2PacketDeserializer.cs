@@ -1,11 +1,11 @@
 using System;
 using OpenCC.Common.Diagnostics;
-using System.Linq;
+using OpenCC.DVRPTRLib.Packets;
 
 namespace OpenCC.DVRPTRLib.IO.PCP2.Deserializers
 {
     internal abstract class PCP2PacketDeserializer<TPacket> : IPCP2PacketDeserializer
-        where TPacket : PCP2Packet
+        where TPacket : Packet
     {
         #region members
         private readonly PacketType _packetType;
@@ -41,7 +41,7 @@ namespace OpenCC.DVRPTRLib.IO.PCP2.Deserializers
         /// </summary>
         /// <returns>The packet.</returns>
         /// <param name="packetBuffer">Packet buffer.</param>
-        public PCP2Packet CreatePacket(byte[] packetBuffer)
+        public Packet CreatePacket(byte[] packetBuffer)
         {
             Guard.IsNotNull(packetBuffer, "packetBuffer");
 

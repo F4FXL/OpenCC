@@ -1,4 +1,4 @@
-using System;
+using OpenCC.DVRPTRLib.Packets;
 
 namespace OpenCC.DVRPTRLib.IO.PCP2.Deserializers
 {
@@ -13,7 +13,7 @@ namespace OpenCC.DVRPTRLib.IO.PCP2.Deserializers
         /// </summary>
         /// <returns>The packet.</returns>
         /// <param name="packetBuffer">Packet buffer.</param>
-        PCP2Packet CreatePacket(byte[] packetBuffer);
+        Packet CreatePacket(byte[] packetBuffer);
 
         /// <summary>
         /// Gets the type of the packet.

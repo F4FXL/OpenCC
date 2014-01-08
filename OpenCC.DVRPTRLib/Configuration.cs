@@ -1,5 +1,4 @@
-using System;
-using OpenCC.DVRPTRLib.IO.PCP2;
+using OpenCC.DVRPTRLib.Packets;
 
 namespace OpenCC.DVRPTRLib
 {

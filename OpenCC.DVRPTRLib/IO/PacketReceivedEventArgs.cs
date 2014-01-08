@@ -1,5 +1,5 @@
 using System;
-using OpenCC.DVRPTRLib.IO.PCP2;
+using OpenCC.DVRPTRLib.Packets;
 
 namespace OpenCC.DVRPTRLib
 {
@@ -9,7 +9,7 @@ namespace OpenCC.DVRPTRLib
     public class PacketReceivedEventArgs : EventArgs
     {
         #region members
-        private readonly PCP2Packet _packet;
+        private readonly Packet _packet;
         #endregion
 
         #region ctors
@@ -19,7 +19,7 @@ namespace OpenCC.DVRPTRLib
         /// <param name='packet'>
         /// Packet.
         /// </param>
-        public PacketReceivedEventArgs(PCP2Packet packet)
+        public PacketReceivedEventArgs(Packet packet)
         {
             _packet = packet;
         }
@@ -32,7 +32,7 @@ namespace OpenCC.DVRPTRLib
         /// <value>
         /// The packet.
         /// </value>
-        public PCP2Packet Packet
+        public Packet Packet
         {
             get
             {

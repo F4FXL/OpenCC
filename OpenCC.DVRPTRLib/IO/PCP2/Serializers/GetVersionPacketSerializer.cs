@@ -1,4 +1,4 @@
-using System;
+using OpenCC.DVRPTRLib.Packets;
 
 namespace OpenCC.DVRPTRLib.IO.PCP2.Serializers
 {
@@ -16,7 +16,7 @@ namespace OpenCC.DVRPTRLib.IO.PCP2.Serializers
         {
             return new byte[]
                 {
-                    PCP2Packet.START_ID,
+                    Constants.START_ID,
                     0x01, //hardcoded 1 length
                     0x00,
                     (byte)PacketType.RPTR_GET_VERSION,

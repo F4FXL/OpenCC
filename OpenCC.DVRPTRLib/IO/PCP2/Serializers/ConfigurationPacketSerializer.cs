@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using OpenCC.DVRPTRLib.IO.PCP2;
 using System.Linq;
 using System.IO;
+using OpenCC.DVRPTRLib.Packets;
 
 namespace OpenCC.DVRPTRLib.IO.PCP2.Serializers
 {
@@ -27,7 +28,7 @@ namespace OpenCC.DVRPTRLib.IO.PCP2.Serializers
             using(BinaryWriter writer = new BinaryWriter(stream))
             {
                 byte[] payload = GetPayloadBytes(packet).ToArray();
-                writer.Write(PCP2Packet.START_ID);
+                writer.Write(Constants.START_ID);
                 writer.Write((Int16)payload.Length);
                 writer.Write(payload);
 

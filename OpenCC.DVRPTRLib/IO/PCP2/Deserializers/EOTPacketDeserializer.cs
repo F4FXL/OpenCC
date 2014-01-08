@@ -1,4 +1,4 @@
-using System;
+using OpenCC.DVRPTRLib.Packets;
 
 namespace OpenCC.DVRPTRLib.IO.PCP2.Deserializers
 {
