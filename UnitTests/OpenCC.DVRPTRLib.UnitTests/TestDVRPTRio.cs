@@ -4,6 +4,7 @@ using System.IO;
 using System.IO.Ports;
 using System.Diagnostics;
 using System.Threading;
+using OpenCC.DVRPTRLib.IO.PCP2;
 
 namespace OpenCC.DVRPTRLib.UnitTests
 {

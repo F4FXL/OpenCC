@@ -9,12 +9,12 @@ using OpenCC.Common.Diagnostics;
 using System.Diagnostics;
 using OpenCC.DVRPTRLib.Packets;
 
-namespace OpenCC.DVRPTRLib
+namespace OpenCC.DVRPTRLib.IO.PCP2
 {
     /// <summary>
     /// This class is for reading/writing commands to the DVRPTR board
     /// </summary>
-	public class DVRPTRio : IDisposable
+	public class DVRPTRio : IDVRPTRio
 	{
 
         #region members

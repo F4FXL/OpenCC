@@ -3,6 +3,7 @@ using System.Threading;
 using OpenCC.Common.Diagnostics;
 using OpenCC.DVRPTRLib.IO.PCP2;
 using OpenCC.DVRPTRLib.Packets;
+using OpenCC.DVRPTRLib.IO;
 
 namespace OpenCC.DVRPTRLib
 {
@@ -13,7 +14,7 @@ namespace OpenCC.DVRPTRLib
             where TAwaitedPacket : Packet
         {
             #region members
-            private DVRPTRio _dvrptrio;
+            private IDVRPTRio _dvrptrio;
             private readonly ManualResetEvent _resetEvent;
             private TAwaitedPacket _packet;
             #endregion
@@ -23,7 +24,7 @@ namespace OpenCC.DVRPTRLib
             /// Initializes a new instance of the OpenCC.DVRPTRLib.DVRPTR+SynchronousBrokerclass.
             /// </summary>
             /// <param name="dvrptrio">Dvrptrio.</param>
-            public SynchronousBroker(DVRPTRio dvrptrio)
+            public SynchronousBroker(IDVRPTRio dvrptrio)
             {
                 Guard.IsNotNull(dvrptrio, "dvrptrio");
 

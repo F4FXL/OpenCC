@@ -34,11 +34,9 @@
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="Configuration.cs" />
-    <Compile Include="IO\DVRPTRio.cs" />
     <Compile Include="IO\PacketReceivedEventArgs.cs" />
     <Compile Include="IO\PCP2\CommandMessageAnswer.cs" />
     <Compile Include="IO\PCP2\PCP2Exception.cs" />
-    <Compile Include="IO\PCP2\PCP2PacketFactory.cs" />
     <Compile Include="IO\PCP2\Deserializers\PCP2PacketDeserializer.cs" />
     <Compile Include="IO\PCP2\Deserializers\RxSyncPacketDeserializer.cs" />
     <Compile Include="IO\PCP2\Deserializers\StartPacketDeserializer.cs" />
@@ -75,6 +73,9 @@
     <Compile Include="IO\PCP2\PacketType.cs" />
     <Compile Include="Packets\StreamIdPacket.cs" />
     <Compile Include="IO\PCP2\Constants.cs" />
+    <Compile Include="IO\PCP2\PCP2PacketFactory.cs" />
+    <Compile Include="IO\IDVRPTRio.cs" />
+    <Compile Include="IO\PCP2\DVRPTRio.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

@@ -18,7 +18,7 @@ namespace OpenCC.DVRPTRLib.IO.PCP2
 
         #region ctors
         /// <summary>
-        /// Initializes the <see cref="OpenCC.DVRPTRLib.IO.PCP2.PCP2PacketFactory"/> class.
+        /// Initializes the <see cref="PCP2PacketFactory"/> class.
         /// </summary>
         static PCP2PacketFactory()
         {
@@ -34,7 +34,7 @@ namespace OpenCC.DVRPTRLib.IO.PCP2
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="OpenCC.DVRPTRLib.IO.PCP2.PCP2PacketFactory"/> class.
+        /// Initializes a new instance of the <see cref="PCP2PacketFactory"/> class.
         /// </summary>
         public PCP2PacketFactory()
         {

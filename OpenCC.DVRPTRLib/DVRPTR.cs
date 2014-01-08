@@ -5,6 +5,7 @@ using OpenCC.DVRPTRLib.IO.PCP2;
 using System.Diagnostics;
 using OpenCC.Common.Diagnostics;
 using OpenCC.DVRPTRLib.Packets;
+using OpenCC.DVRPTRLib.IO;
 
 namespace OpenCC.DVRPTRLib
 {
@@ -14,7 +15,7 @@ namespace OpenCC.DVRPTRLib
     public partial class DVRPTR : IDisposable
     {
         #region members
-        private readonly DVRPTRio _dvrptrIO;
+        private readonly IDVRPTRio _dvrptrIO;
         private TimeSpan _dvrptrTimeout;
         private static readonly DVRPTRVersion _minSupportedVersion;
         #endregion
@@ -23,23 +24,10 @@ namespace OpenCC.DVRPTRLib
         /// <summary>
         /// Initializes a new instance of the <see cref="OpenCC.DVRPTRLib.DVRPTR"/> class.
         /// </summary>
-        /// <param name="stream">Stream.</param>
-        /// <param name="streamOwner">If set to <c>true</c> stream owner.</param>
-        public DVRPTR(Stream stream, bool streamOwner)
-            : this(stream, streamOwner, null)
+        public DVRPTR(IDVRPTRio dvrptrio)
         {
-            
-        }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="OpenCC.DVRPTRLib.DVRPTR"/> class.
-        /// </summary>
-        /// <param name="stream">Stream.</param>
-        /// <param name="streamOwner">If set to <c>true</c> stream owner.</param>
-        /// <param name="syncContext">Sync context to fire events on it</param>
-        public DVRPTR(Stream stream, bool streamOwner, SynchronizationContext syncContext)
-        {
-            //No need to null check args here, DVRPTRio ctor is doing this for us :)
-            _dvrptrIO = new DVRPTRio(stream, streamOwner, syncContext);
+            Guard.IsNotNull(dvrptrio, "dvrptrio");
+            _dvrptrIO = dvrptrio;
             _dvrptrTimeout = TimeSpan.FromMilliseconds(500);
         }
 
