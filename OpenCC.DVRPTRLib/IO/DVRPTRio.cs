@@ -100,9 +100,14 @@ namespace OpenCC.DVRPTRLib
         {
             get
             {
-                bool isOpen= _run &&
+                bool isOpen= !_disposed &&
+                             _run &&
                              _readModemThread != null &&
-                             _readModemThread.IsAlive;
+                             _readModemThread.IsAlive &&
+                             _writeModemThread != null &&
+                             _writeModemThread.IsAlive &&
+                             _packetDispatchThread != null &&
+                             _packetDispatchThread.IsAlive;
 
                 return isOpen;
             }

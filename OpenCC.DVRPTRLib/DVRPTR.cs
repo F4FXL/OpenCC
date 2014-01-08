@@ -15,7 +15,7 @@ namespace OpenCC.DVRPTRLib
         #region members
         private readonly DVRPTRio _dvrptrIO;
         private TimeSpan _dvrptrTimeout;
-        private static readonly DVRPTRVersion _supportedVersion;
+        private static readonly DVRPTRVersion _minSupportedVersion;
         #endregion
 
         #region ctors
@@ -47,7 +47,7 @@ namespace OpenCC.DVRPTRLib
         /// </summary>
         static DVRPTR()
         {
-            _supportedVersion = new DVRPTRVersion(1,6,9,'b', "DV-RPTR R.2012-08-08");//1.69b DV-RPTR R.2012-08-08
+            _minSupportedVersion = new DVRPTRVersion(1,6,9,'b', "DV-RPTR R.2012-08-08");//1.69b DV-RPTR R.2012-08-08
         }
         #endregion
 
@@ -63,8 +63,7 @@ namespace OpenCC.DVRPTRLib
             DVRPTRVersion version = null;
 
             GetVersionAnswerPacket versionAnswerPacket = SendCommandAndWaitForAnswer<GetVersionAnswerPacket>(new GetVersionPacket());
-            if (versionAnswerPacket != null)
-                version = versionAnswerPacket.ToVersion();
+            version = versionAnswerPacket.ToVersion();
 
             return version;
         }
@@ -73,6 +72,9 @@ namespace OpenCC.DVRPTRLib
             where TAnswerPacket : PCP2Packet
         {
             Guard.IsNotNull(commandPacket, "commandPacket");
+
+            if(!this.IsOpen)
+                throw new InvalidOperationException("This DVRPTR is not open");
 
             using(SynchronousBroker<TAnswerPacket> sync = new SynchronousBroker<TAnswerPacket>(this._dvrptrIO))
             {
@@ -97,11 +99,11 @@ namespace OpenCC.DVRPTRLib
             if(IsOpen)
             {
                 DVRPTRVersion boardVersion = this.GetVersion();
-                if (boardVersion == null)
-                    throw new DVRPTRException("Failed to retrieve version");
 
-                if (boardVersion < _supportedVersion)
-                    throw new DVRPTRVersionException(_supportedVersion, boardVersion);
+                if (boardVersion < _minSupportedVersion)
+                    throw new DVRPTRVersionException(_minSupportedVersion, boardVersion);
+
+
             }
         }
 
@@ -112,9 +114,23 @@ namespace OpenCC.DVRPTRLib
         {
             this.Dispose();
         }
+
+        /// <summary>
+        /// Gets the configuration.
+        /// </summary>
+        /// <returns>The configuration.</returns>
+        public Configuration GetConfiguration()
+        {
+            Configuration configuration = null;
+
+            ConfigurationPacket configurationPacket = SendCommandAndWaitForAnswer<ConfigurationPacket>(new GetConfigurationPacket());
+
+            return configuration;
+        }
         #endregion
 
         #region properties
+
 
         /// <summary>
         /// Gets a value indicating whether this instance is open.

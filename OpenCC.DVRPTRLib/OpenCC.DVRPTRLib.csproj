@@ -79,6 +79,7 @@
   <ItemGroup>
     <Folder Include="Extensions\" />
     <Folder Include="IO\" />
+    <Folder Include="Commands\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OpenCC.Common\OpenCC.Common.csproj">
