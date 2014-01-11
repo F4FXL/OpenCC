@@ -17,7 +17,7 @@ namespace OpenCC.DVRPTRLib.UnitTests
             using (SerialPort serial = new SerialPort("/dev/ttyACM0"))
             {
                 serial.Open();
-                using (DVRPTRio dvrptr = new DVRPTRio(serial.BaseStream, false))
+                using (PCP2DVRPTRio dvrptr = new PCP2DVRPTRio(serial.BaseStream, false))
                 {
                     dvrptr.PacketReceived += (sender, e) => Debug.WriteLine(e.Packet);
                     dvrptr.Open();

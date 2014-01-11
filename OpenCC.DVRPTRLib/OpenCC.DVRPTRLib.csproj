@@ -75,7 +75,8 @@
     <Compile Include="IO\PCP2\Constants.cs" />
     <Compile Include="IO\PCP2\PCP2PacketFactory.cs" />
     <Compile Include="IO\IDVRPTRio.cs" />
-    <Compile Include="IO\PCP2\DVRPTRio.cs" />
+    <Compile Include="IO\PCP2\PCP2DVRPTRio.cs" />
+    <Compile Include="IO\DVRPTRio.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

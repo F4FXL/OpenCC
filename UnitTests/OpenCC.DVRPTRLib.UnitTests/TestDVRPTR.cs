@@ -15,7 +15,7 @@ namespace OpenCC.DVRPTRLib.UnitTests
             using (SerialPort serial = new SerialPort("/dev/ttyACM0"))
             {
                 serial.Open();
-                using(DVRPTR dvrptr = new DVRPTR(new DVRPTRio(serial.BaseStream,false)))
+                using(DVRPTR dvrptr = new DVRPTR(new PCP2DVRPTRio(serial.BaseStream,false)))
                 {
                     dvrptr.TimeOut = TimeSpan.FromMilliseconds(-1);//this will give us infinite timeout so we can debug
                     dvrptr.Open();
@@ -33,7 +33,7 @@ namespace OpenCC.DVRPTRLib.UnitTests
             using (SerialPort serial = new SerialPort("/dev/ttyACM0"))
             {
                 serial.Open();
-                using(DVRPTR dvrptr = new DVRPTR(new DVRPTRio(serial.BaseStream,false)))
+                using(DVRPTR dvrptr = new DVRPTR(new PCP2DVRPTRio(serial.BaseStream,false)))
                 {
                     dvrptr.TimeOut = TimeSpan.FromMilliseconds(-1);//this will give us infinite timeout so we can debug
                     dvrptr.Open();
