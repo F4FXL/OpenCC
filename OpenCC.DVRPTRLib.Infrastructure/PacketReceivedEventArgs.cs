@@ -1,7 +1,7 @@
 using System;
 using OpenCC.DVRPTRLib.Infrastructure.Packets;
 
-namespace OpenCC.DVRPTRLib
+namespace OpenCC.DVRPTRLib.Infrastructure
 {
     /// <summary>
     /// Packet received event arguments.

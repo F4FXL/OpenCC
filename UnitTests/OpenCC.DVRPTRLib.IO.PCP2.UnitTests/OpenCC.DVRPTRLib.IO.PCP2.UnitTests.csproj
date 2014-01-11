@@ -5,10 +5,10 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.0</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{2F9FC841-8E8B-4D05-A35C-1FB97D1E82ED}</ProjectGuid>
+    <ProjectGuid>{07360094-5258-4372-B73D-4A066C2E5049}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>OpenCC.DVRPTRLib.Infrastructure</RootNamespace>
-    <AssemblyName>OpenCC.DVRPTRLib.Infrastructure</AssemblyName>
+    <RootNamespace>OpenCC.DVRPTRLib.IO.PCP2.UnitTests</RootNamespace>
+    <AssemblyName>OpenCC.DVRPTRLib.IO.PCP2.UnitTests</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -30,27 +30,26 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="nunit.framework">
+      <Private>False</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Packets\ConfigurationPacket.cs" />
-    <Compile Include="Packets\EOTPacket.cs" />
-    <Compile Include="Packets\GetConfigurationPacket.cs" />
-    <Compile Include="Packets\GetVersionAnswerPacket.cs" />
-    <Compile Include="Packets\GetVersionPacket.cs" />
-    <Compile Include="Packets\Packet.cs" />
-    <Compile Include="Packets\RXLostPacket.cs" />
-    <Compile Include="Packets\RXPreamblePacket.cs" />
-    <Compile Include="Packets\RxSyncPacket.cs" />
-    <Compile Include="Packets\StartPacket.cs" />
-    <Compile Include="Packets\StreamIdPacket.cs" />
-    <Compile Include="PacketReceivedEventArgs.cs" />
+    <Compile Include="TestPCP2DVRPTRio.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\OpenCC.Common\OpenCC.Common.csproj">
-      <Project>{D78303D7-9220-4F4C-9E3D-B1F3C87ED8F3}</Project>
-      <Name>OpenCC.Common</Name>
+    <ProjectReference Include="..\..\OpenCC.DVRPTRLib.IO\OpenCC.DVRPTRLib.IO.csproj">
+      <Project>{92EEE578-572B-47F0-91DD-051FEBAF4E3A}</Project>
+      <Name>OpenCC.DVRPTRLib.IO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\OpenCC.DVRPTRLib.IO.PCP2\OpenCC.DVRPTRLib.IO.PCP2.csproj">
+      <Project>{D8E428C7-14FF-423D-B51F-5327F3D20244}</Project>
+      <Name>OpenCC.DVRPTRLib.IO.PCP2</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\OpenCC.DVRPTRLib.Infrastructure\OpenCC.DVRPTRLib.Infrastructure.csproj">
+      <Project>{2F9FC841-8E8B-4D05-A35C-1FB97D1E82ED}</Project>
+      <Name>OpenCC.DVRPTRLib.Infrastructure</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>

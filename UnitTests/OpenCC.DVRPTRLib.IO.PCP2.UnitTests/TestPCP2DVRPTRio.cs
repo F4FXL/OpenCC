@@ -9,7 +9,7 @@ using OpenCC.DVRPTRLib.IO.PCP2;
 namespace OpenCC.DVRPTRLib.UnitTests
 {
     [TestFixture()]
-    public class TestDVRPTRio
+    public class TestPCP2DVRPTRio
     {
         [Test()]
         public void TestOpen()

@@ -1,5 +1,6 @@
 using System;
 using OpenCC.DVRPTRLib.Infrastructure.Packets;
+using OpenCC.DVRPTRLib.Infrastructure;
 
 
 namespace OpenCC.DVRPTRLib.IO

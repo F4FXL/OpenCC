@@ -37,7 +37,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
-    <Compile Include="TestDVRPTRio.cs" />
     <Compile Include="TestDVRPTR.cs" />
     <Compile Include="TestDVRPTRVersion.cs" />
   </ItemGroup>
@@ -57,6 +56,14 @@
     <ProjectReference Include="..\..\OpenCC.DVRPTRLib.Infrastructure\OpenCC.DVRPTRLib.Infrastructure.csproj">
       <Project>{2F9FC841-8E8B-4D05-A35C-1FB97D1E82ED}</Project>
       <Name>OpenCC.DVRPTRLib.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\OpenCC.DVRPTRLib.IO\OpenCC.DVRPTRLib.IO.csproj">
+      <Project>{92EEE578-572B-47F0-91DD-051FEBAF4E3A}</Project>
+      <Name>OpenCC.DVRPTRLib.IO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\OpenCC.DVRPTRLib.IO.PCP2\OpenCC.DVRPTRLib.IO.PCP2.csproj">
+      <Project>{D8E428C7-14FF-423D-B51F-5327F3D20244}</Project>
+      <Name>OpenCC.DVRPTRLib.IO.PCP2</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>

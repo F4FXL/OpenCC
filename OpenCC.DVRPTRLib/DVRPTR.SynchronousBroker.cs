@@ -3,6 +3,7 @@ using System.Threading;
 using OpenCC.Common.Diagnostics;
 using OpenCC.DVRPTRLib.Infrastructure.Packets;
 using OpenCC.DVRPTRLib.IO;
+using OpenCC.DVRPTRLib.Infrastructure;
 
 namespace OpenCC.DVRPTRLib
 {
