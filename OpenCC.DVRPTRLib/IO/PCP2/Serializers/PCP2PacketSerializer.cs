@@ -1,6 +1,7 @@
 using System;
 using OpenCC.Common.Diagnostics;
-using OpenCC.DVRPTRLib.Packets;
+using OpenCC.DVRPTRLib.Infrastructure.Packets;
+
 
 namespace OpenCC.DVRPTRLib.IO.PCP2.Serializers
 {

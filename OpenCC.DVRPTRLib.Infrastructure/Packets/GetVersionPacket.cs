@@ -1,6 +1,6 @@
 using System;
 
-namespace OpenCC.DVRPTRLib.Packets
+namespace OpenCC.DVRPTRLib.Infrastructure.Packets
 {
     /// <summary>
     /// Get version packet.

@@ -1,10 +1,6 @@
 using System;
-using System.IO;
-using System.Threading;
-using OpenCC.DVRPTRLib.IO.PCP2;
-using System.Diagnostics;
 using OpenCC.Common.Diagnostics;
-using OpenCC.DVRPTRLib.Packets;
+using OpenCC.DVRPTRLib.Infrastructure.Packets;
 using OpenCC.DVRPTRLib.IO;
 
 namespace OpenCC.DVRPTRLib
@@ -52,7 +48,7 @@ namespace OpenCC.DVRPTRLib
             DVRPTRVersion version = null;
 
             GetVersionAnswerPacket versionAnswerPacket = SendCommandAndWaitForAnswer<GetVersionAnswerPacket>(new GetVersionPacket());
-            version = versionAnswerPacket.ToVersion();
+            version = DVRPTRVersion.FromPacket(versionAnswerPacket);
 
             return version;
         }

@@ -1,6 +1,7 @@
 using System;
 using OpenCC.Common;
 using OpenCC.Common.Diagnostics;
+using OpenCC.DVRPTRLib.Infrastructure.Packets;
 
 namespace OpenCC.DVRPTRLib
 {
@@ -40,6 +41,24 @@ namespace OpenCC.DVRPTRLib
             _subSubVersion = subSubVersion;
             _bugFixLevel = bugFixLevel;
             _deviceIdentification = deviceIdentification ?? string.Empty;
+        }
+        #endregion
+
+        #region methods
+        /// <summary>
+        /// Factory method to construct a <see cref="DVRPTRVersion"/> from a <see cref="GetVersionAnswerPacket"/> 
+        /// </summary>
+        /// <returns>The packet.</returns>
+        /// <param name="packet">Packet.</param>
+        public static DVRPTRVersion FromPacket(GetVersionAnswerPacket packet)
+        {
+            DVRPTRVersion version = new DVRPTRVersion(packet.MainVersion,
+                                                      packet.SubVersion,
+                                                      packet.SubsubVersion,
+                                                      packet.BugFixLevel,
+                                                      packet.DeviceIdentification);
+
+            return version;
         }
         #endregion
 
@@ -92,7 +111,6 @@ namespace OpenCC.DVRPTRLib
             }
         }
         #endregion
-
         
         #region operators
         public static bool operator <(DVRPTRVersion a, DVRPTRVersion b)
@@ -159,7 +177,6 @@ namespace OpenCC.DVRPTRLib
             return result;
         }
         #endregion
-
 
         #region IEquatable implementation
 

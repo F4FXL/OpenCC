@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using OpenCC.DVRPTRLib.IO.PCP2;
 using System.Linq;
 using System.IO;
-using OpenCC.DVRPTRLib.Packets;
+using OpenCC.DVRPTRLib.Infrastructure.Packets;
+
 
 namespace OpenCC.DVRPTRLib.IO.PCP2.Serializers
 {

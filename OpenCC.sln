@@ -18,6 +18,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{42D82CDD-5
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenCC.Common", "OpenCC.Common\OpenCC.Common.csproj", "{D78303D7-9220-4F4C-9E3D-B1F3C87ED8F3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenCC.DVRPTRLib.Infrastructure", "OpenCC.DVRPTRLib.Infrastructure\OpenCC.DVRPTRLib.Infrastructure.csproj", "{2F9FC841-8E8B-4D05-A35C-1FB97D1E82ED}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -25,6 +27,12 @@ Global
 		Default|Any CPU = Default|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2F9FC841-8E8B-4D05-A35C-1FB97D1E82ED}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{2F9FC841-8E8B-4D05-A35C-1FB97D1E82ED}.Debug|x86.Build.0 = Debug|Any CPU
+		{2F9FC841-8E8B-4D05-A35C-1FB97D1E82ED}.Default|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F9FC841-8E8B-4D05-A35C-1FB97D1E82ED}.Default|Any CPU.Build.0 = Debug|Any CPU
+		{2F9FC841-8E8B-4D05-A35C-1FB97D1E82ED}.Release|x86.ActiveCfg = Release|Any CPU
+		{2F9FC841-8E8B-4D05-A35C-1FB97D1E82ED}.Release|x86.Build.0 = Release|Any CPU
 		{3A9654AC-29E1-4511-90DE-8BCC109AB6D9}.Debug|x86.ActiveCfg = Debug|Any CPU
 		{3A9654AC-29E1-4511-90DE-8BCC109AB6D9}.Debug|x86.Build.0 = Debug|Any CPU
 		{3A9654AC-29E1-4511-90DE-8BCC109AB6D9}.Release|x86.ActiveCfg = Release|Any CPU

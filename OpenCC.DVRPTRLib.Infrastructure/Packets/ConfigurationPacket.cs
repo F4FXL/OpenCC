@@ -1,7 +1,7 @@
 
-namespace OpenCC.DVRPTRLib.Packets
+namespace OpenCC.DVRPTRLib.Infrastructure.Packets
 {
-    internal class ConfigurationPacket : Packet
+    public class ConfigurationPacket : Packet
     {
         #region ctor
         /// <summary>

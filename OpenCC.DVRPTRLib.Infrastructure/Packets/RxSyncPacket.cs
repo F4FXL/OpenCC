@@ -1,11 +1,11 @@
-using OpenCC.DVRPTRLib.Packets;
 
-namespace OpenCC.DVRPTRLib.Packets
+
+namespace OpenCC.DVRPTRLib.Infrastructure.Packets
 {
     /// <summary>
     /// Rx sync packet.
     /// </summary>
-    internal class RxSyncPacket : StreamIdPacket
+    public class RxSyncPacket : StreamIdPacket
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="OpenCC.DVRPTRLib.PCP2.RxSyncPacket"/> class.

@@ -1,8 +1,7 @@
 using System;
 using System.Threading;
 using OpenCC.Common.Diagnostics;
-using OpenCC.DVRPTRLib.IO.PCP2;
-using OpenCC.DVRPTRLib.Packets;
+using OpenCC.DVRPTRLib.Infrastructure.Packets;
 using OpenCC.DVRPTRLib.IO;
 
 namespace OpenCC.DVRPTRLib

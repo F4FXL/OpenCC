@@ -1,9 +1,10 @@
 using System;
 using System.IO;
-using OpenCC.DVRPTRLib.Packets;
+
 using System.Threading;
 using OpenCC.Common;
 using OpenCC.Common.Diagnostics;
+using OpenCC.DVRPTRLib.Infrastructure.Packets;
 
 namespace OpenCC.DVRPTRLib.IO
 {

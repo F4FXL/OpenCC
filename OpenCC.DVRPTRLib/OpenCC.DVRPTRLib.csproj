@@ -60,18 +60,7 @@
     <Compile Include="DVRPTRException.cs" />
     <Compile Include="DVRPTRVersionException.cs" />
     <Compile Include="DVRPTRTimeoutException.cs" />
-    <Compile Include="Packets\ConfigurationPacket.cs" />
-    <Compile Include="Packets\EOTPacket.cs" />
-    <Compile Include="Packets\GetConfigurationPacket.cs" />
-    <Compile Include="Packets\GetVersionAnswerPacket.cs" />
-    <Compile Include="Packets\GetVersionPacket.cs" />
-    <Compile Include="Packets\RXLostPacket.cs" />
-    <Compile Include="Packets\RXPreamblePacket.cs" />
-    <Compile Include="Packets\RxSyncPacket.cs" />
-    <Compile Include="Packets\StartPacket.cs" />
-    <Compile Include="Packets\Packet.cs" />
     <Compile Include="IO\PCP2\PacketType.cs" />
-    <Compile Include="Packets\StreamIdPacket.cs" />
     <Compile Include="IO\PCP2\Constants.cs" />
     <Compile Include="IO\PCP2\PCP2PacketFactory.cs" />
     <Compile Include="IO\IDVRPTRio.cs" />
@@ -82,12 +71,15 @@
   <ItemGroup>
     <Folder Include="Extensions\" />
     <Folder Include="IO\" />
-    <Folder Include="Packets\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OpenCC.Common\OpenCC.Common.csproj">
       <Project>{D78303D7-9220-4F4C-9E3D-B1F3C87ED8F3}</Project>
       <Name>OpenCC.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenCC.DVRPTRLib.Infrastructure\OpenCC.DVRPTRLib.Infrastructure.csproj">
+      <Project>{2F9FC841-8E8B-4D05-A35C-1FB97D1E82ED}</Project>
+      <Name>OpenCC.DVRPTRLib.Infrastructure</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -7,12 +7,14 @@ using System.Threading;
 using OpenCC.Common;
 using OpenCC.Common.Diagnostics;
 using System.Diagnostics;
-using OpenCC.DVRPTRLib.Packets;
+using OpenCC.DVRPTRLib.Infrastructure.Packets;
+
 
 namespace OpenCC.DVRPTRLib.IO.PCP2
 {
     /// <summary>
     /// This class is for reading/writing commands to the DVRPTR board
+    /// This a PCP2 implementation
     /// </summary>
 	public class PCP2DVRPTRio : DVRPTRio
 	{
@@ -30,7 +32,12 @@ namespace OpenCC.DVRPTRLib.IO.PCP2
             
         }
 
-
+        /// <summary>
+        /// Initializes a new instance of the <see cref="OpenCC.DVRPTRLib.IO.PCP2.PCP2DVRPTRio"/> class.
+        /// </summary>
+        /// <param name="stream">Stream.</param>
+        /// <param name="streamOwner">If set to <c>true</c> this instance is the stream owner. The stream will disposed when this instance is disposed</param>
+        /// <param name="syncContext">Sync context.</param>
         public PCP2DVRPTRio(Stream stream, bool streamOwner, SynchronizationContext syncContext)
             : base(stream, streamOwner, syncContext)
         {
