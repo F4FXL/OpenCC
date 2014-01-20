@@ -54,6 +54,7 @@
     <Compile Include="Serializers\GetVersionPacketSerializer.cs" />
     <Compile Include="Serializers\IPCP2PacketSerializer.cs" />
     <Compile Include="Serializers\PCP2PacketSerializer.cs" />
+    <Compile Include="Serializers\GetSerialNumberPacketSerializer.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

@@ -39,6 +39,7 @@
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="TestDVRPTR.cs" />
     <Compile Include="TestDVRPTRVersion.cs" />
+    <Compile Include="TestDVRPTRSerialNumber.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>

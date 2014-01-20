@@ -40,6 +40,7 @@
     <Compile Include="DVRPTRException.cs" />
     <Compile Include="DVRPTRVersionException.cs" />
     <Compile Include="DVRPTRTimeoutException.cs" />
+    <Compile Include="DVRPTRSerialNumber.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

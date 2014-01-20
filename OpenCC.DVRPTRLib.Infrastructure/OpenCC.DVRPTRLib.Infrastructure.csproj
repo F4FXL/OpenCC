@@ -45,6 +45,8 @@
     <Compile Include="Packets\StartPacket.cs" />
     <Compile Include="Packets\StreamIdPacket.cs" />
     <Compile Include="PacketReceivedEventArgs.cs" />
+    <Compile Include="Packets\GetSerialNumberPacket.cs" />
+    <Compile Include="Packets\GetSerialNumberAnswerPacket.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

@@ -28,6 +28,7 @@ namespace OpenCC.DVRPTRLib.IO.PCP2
             Default.RegisterSerializer(new ConfigurationPacketSerializer());
             Default.RegisterSerializer(new GetConfigurationPacketSerializer());
             Default.RegisterSerializer(new GetVersionPacketSerializer());
+            Default.RegisterSerializer(new GetSerialNumberPacketSerializer());
         }
 
         /// <summary>
