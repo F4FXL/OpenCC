@@ -37,6 +37,7 @@
     <Compile Include="Diagnostics\Guard.cs" />
     <Compile Include="IO\BinaryReaderExtensions.cs" />
     <Compile Include="ComparableHelper.cs" />
+    <Compile Include="BCDConverter.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

@@ -53,6 +53,18 @@ namespace OpenCC.DVRPTRLib
             return version;
         }
 
+        /// <summary>
+        /// Gets the serial number.
+        /// </summary>
+        /// <returns>The serial number.</returns>
+        public DVRPTRSerialNumber GetSerialNumber()
+        {
+            GetSerialNumberAnswerPacket serialNumberPkt = SendCommandAndWaitForAnswer<GetSerialNumberAnswerPacket>(new GetSerialNumberPacket());
+            DVRPTRSerialNumber serialNumber = new DVRPTRSerialNumber(serialNumberPkt.SerialNumber);
+
+            return serialNumber;
+        }
+
         private TAnswerPacket SendCommandAndWaitForAnswer<TAnswerPacket>(Packet commandPacket)
             where TAnswerPacket : Packet
         {

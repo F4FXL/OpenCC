@@ -8,7 +8,7 @@ namespace OpenCC.DVRPTRLib.Infrastructure.Packets
     public class GetSerialNumberAnswerPacket : Packet
     {
         #region members
-        private readonly int _serial;
+        private readonly uint _serial;
         #endregion
         #region ctor
         /// <summary>
@@ -16,7 +16,7 @@ namespace OpenCC.DVRPTRLib.Infrastructure.Packets
         /// <see cref="OpenCC.DVRPTRLib.Infrastructure.Packets.GetSerialNumberAnswerPacket"/> class.
         /// </summary>
         /// <param name="serialNumber">Serial number.</param>
-        public GetSerialNumberAnswerPacket(int serialNumber)
+        public GetSerialNumberAnswerPacket(uint serialNumber)
         {
             _serial = serialNumber;
         }
@@ -27,7 +27,7 @@ namespace OpenCC.DVRPTRLib.Infrastructure.Packets
         /// Gets the serial number.
         /// </summary>
         /// <value>The serial number.</value>
-        public int SerialNumber
+        public uint SerialNumber
         {
             get
             {

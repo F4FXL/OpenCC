@@ -27,6 +27,24 @@ namespace OpenCC.DVRPTRLib.UnitTests
             }
         }
 
+        [Test]
+        public void TestGetSerial()
+        {
+            using (SerialPort serial = new SerialPort("/dev/ttyACM0"))
+            {
+                serial.Open();
+                using(DVRPTR dvrptr = new DVRPTR(new PCP2DVRPTRio(serial.BaseStream,false)))
+                {
+                    dvrptr.TimeOut = TimeSpan.FromMilliseconds(-1);//this will give us infinite timeout so we can debug
+                    dvrptr.Open();
+                    DVRPTRSerialNumber serialNumber = dvrptr.GetSerialNumber();
+
+                    Assert.IsNotNull(serialNumber, "version should not be null");
+                    Console.WriteLine("Year {0} Month {1} Number : {2}", serialNumber.Year, serialNumber.Week, serialNumber.Number);
+                }
+            }
+        }
+
         [Test()]
         public void TestGetConfiguration()
         {

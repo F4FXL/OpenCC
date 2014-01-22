@@ -32,6 +32,7 @@ namespace OpenCC.DVRPTRLib.IO.PCP2
             Default.RegisterDeserializer(new RxSyncPacketDeserializer());
             Default.RegisterDeserializer(new ConfigurationPacketDeserializer());
             Default.RegisterDeserializer(new GetVersionAnswerPacketDeserializer());
+            Default.RegisterDeserializer(new GetSerialNumberAnswerPacketDeserializer());
         }
 
         /// <summary>

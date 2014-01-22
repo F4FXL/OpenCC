@@ -1,14 +1,15 @@
 using System;
+using OpenCC.Common;
 
 namespace OpenCC.DVRPTRLib
 {
     /// <summary>
     /// DVRPTR serial number.
     /// </summary>
-    public sealed class DVRPTRSerialNumber
+    public sealed class DVRPTRSerialNumber : IEquatable<DVRPTRSerialNumber>
     {
         #region members
-        private readonly int _serialNumber;
+        private readonly uint _serialNumber;
         #endregion
 
         #region ctor
@@ -16,7 +17,7 @@ namespace OpenCC.DVRPTRLib
         /// Initializes a new instance of the <see cref="OpenCC.DVRPTRLib.DVRPTRSerialNumber"/> class.
         /// </summary>
         /// <param name="serialNumber">Serial number.</param>
-        public DVRPTRSerialNumber(int serialNumber)
+        public DVRPTRSerialNumber(uint serialNumber)
         {
             _serialNumber = serialNumber;
         }
@@ -27,11 +28,12 @@ namespace OpenCC.DVRPTRLib
         /// Gets the year.
         /// </summary>
         /// <value>The year.</value>
-        public int Year
+        public uint Year
         {
             get
             {
-                int year = _serialNumber & 0x000000FF;
+                uint year = (_serialNumber >> 28) & 0xF;
+                year = year.BCDtoDecimal();
                 return year;
             }
         }
@@ -40,13 +42,13 @@ namespace OpenCC.DVRPTRLib
         /// Gets the month.
         /// </summary>
         /// <value>The month.</value>
-        public int Month
+        public uint Week
         {
             get
             {
-                int month = _serialNumber >> 8;
-                month = month & 0x000000FF;
-                return month;
+                uint week = (_serialNumber >> 24) & 0xF;
+                week = week.BCDtoDecimal();
+                return week;
             }
         }
 
@@ -54,11 +56,11 @@ namespace OpenCC.DVRPTRLib
         /// Gets the number.
         /// </summary>
         /// <value>The number.</value>
-        public int Number
+        public uint Number
         {
             get
             {
-                int number = _serialNumber >> 16;
+                uint number = _serialNumber >> 16;
                 number = number & 0x0000FFFF;
                 return number;
             }
@@ -73,7 +75,7 @@ namespace OpenCC.DVRPTRLib
         /// hash table.</returns>
         public override int GetHashCode()
         {
-            return _serialNumber;
+            return _serialNumber.GetHashCode();
         }
 
         /// <summary>
@@ -84,15 +86,38 @@ namespace OpenCC.DVRPTRLib
         /// <see cref="OpenCC.DVRPTRLib.DVRPTRSerialNumber"/>; otherwise, <c>false</c>.</returns>
         public override bool Equals(object obj)
         {
+            return Equals(obj as DVRPTRSerialNumber);
+        }
+
+        /// <summary>
+        /// Returns a <see cref="System.String"/> that represents the current <see cref="OpenCC.DVRPTRLib.DVRPTRSerialNumber"/>.
+        /// </summary>
+        /// <returns>A <see cref="System.String"/> that represents the current <see cref="OpenCC.DVRPTRLib.DVRPTRSerialNumber"/>.</returns>
+        public override string ToString()
+        {
+            //return string.Format("[DVRPTRSerialNumber: Year={0}, Week={1}, Number={2}]", Year, Week, Number);
+            return _serialNumber.BCDtoDecimal().ToString();
+        }
+        #endregion
+
+        #region IEquatable implementation
+        /// <summary>
+        /// Determines whether the specified <see cref="OpenCC.DVRPTRLib.DVRPTRSerialNumber"/> is equal to the current <see cref="OpenCC.DVRPTRLib.DVRPTRSerialNumber"/>.
+        /// </summary>
+        /// <param name="other">The <see cref="OpenCC.DVRPTRLib.DVRPTRSerialNumber"/> to compare with the current <see cref="OpenCC.DVRPTRLib.DVRPTRSerialNumber"/>.</param>
+        /// <returns><c>true</c> if the specified <see cref="OpenCC.DVRPTRLib.DVRPTRSerialNumber"/> is equal to the current
+        /// <see cref="OpenCC.DVRPTRLib.DVRPTRSerialNumber"/>; otherwise, <c>false</c>.</returns>
+        public bool Equals(DVRPTRSerialNumber other)
+        {
             bool equals = false;
-            if(obj is DVRPTRSerialNumber)
+            if(other != null)
             {
-                DVRPTRSerialNumber other = (DVRPTRSerialNumber)obj;
                 equals = other._serialNumber == _serialNumber;
             }
 
             return equals;
         }
+
         #endregion
     }
 }
