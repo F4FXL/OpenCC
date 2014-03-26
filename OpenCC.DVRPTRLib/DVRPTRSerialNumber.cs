@@ -19,6 +19,9 @@ namespace OpenCC.DVRPTRLib
         /// <param name="serialNumber">Serial number.</param>
         public DVRPTRSerialNumber(uint serialNumber)
         {
+            byte[] b = BitConverter.GetBytes(serialNumber);
+            Array.Reverse(b);
+            serialNumber = BitConverter.ToUInt32(b, 0);
             _serialNumber = serialNumber;
         }
         #endregion

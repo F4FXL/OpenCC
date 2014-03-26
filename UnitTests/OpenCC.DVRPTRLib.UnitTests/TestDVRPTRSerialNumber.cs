@@ -7,7 +7,7 @@ namespace OpenCC.DVRPTRLib.UnitTests
     public class TestDVRPTRSerialNumber
     {
         [Test()]
-        public void TestCase()
+        public void TestParse()
         {
             DVRPTRSerialNumber serialNumber = new DVRPTRSerialNumber ((123 << 16) | (12 << 8) | 13);
             Assert.AreEqual(13, serialNumber.Year);

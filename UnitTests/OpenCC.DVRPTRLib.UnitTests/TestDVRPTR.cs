@@ -40,7 +40,8 @@ namespace OpenCC.DVRPTRLib.UnitTests
                     DVRPTRSerialNumber serialNumber = dvrptr.GetSerialNumber();
 
                     Assert.IsNotNull(serialNumber, "version should not be null");
-                    Console.WriteLine("Year {0} Month {1} Number : {2}", serialNumber.Year, serialNumber.Week, serialNumber.Number);
+                    Console.WriteLine("Year {0} Week {1} Number : {2}", serialNumber.Year, serialNumber.Week, serialNumber.Number);
+                    Console.WriteLine(serialNumber.ToString());
                 }
             }
         }
@@ -55,10 +56,10 @@ namespace OpenCC.DVRPTRLib.UnitTests
                 {
                     dvrptr.TimeOut = TimeSpan.FromMilliseconds(-1);//this will give us infinite timeout so we can debug
                     dvrptr.Open();
-                    Configuration version = dvrptr.GetConfiguration();
+                    Configuration config = dvrptr.GetConfiguration();
 
-                    Assert.IsNotNull(version, "version should not be null");
-                    Console.WriteLine(version);
+					Assert.IsNotNull(config, "config should not be null");
+					Console.WriteLine(config);
                 }
             }
         }
